@@ -69,3 +69,103 @@ console.log(myCar.drive())
 let vehOne = new Vehicle("Ford" , "Mustang")
 console.log(vehOne.make);
 
+//Encapsulation 
+class BankAccount
+{
+    #balance = 0
+    deposit(amount)
+    {
+       this.#balance += amount
+       return this.#balance
+    }
+
+    getBalance()
+    {
+        return `$ ${this.#balance}`
+    }
+}
+
+let account = new BankAccount()
+console.log(account.getBalance());
+
+// Abstraction 
+
+class CoffeeMachine 
+{
+    start()
+    {
+        return `Starting the machine`
+    }
+
+    brewCoffee()
+    {
+        return `brewing a machine`
+    }
+
+    pressStartButton()
+    {
+       let msgOne = this.start();
+       let msgTwo = this.brewCoffee()
+       return `${msgOne} + ${msgTwo}`
+    }
+}
+let machine = new  CoffeeMachine()
+// console.log(machine.start())
+// console.log(machine.brewCoffee());
+console.log(machine.pressStartButton())
+
+// Polymorphism - Having many forms 
+
+class Bird {
+    fly()
+    {
+        return `flying`
+    }
+}
+ class Penguin extends Bird{
+   fly()
+   {
+    return `Penguins can't fly`
+   }
+ }
+let bird = new Bird()
+let penguin = new Penguin()
+console.log(bird.fly())
+console.log(penguin.fly()) 
+
+// Static method 
+
+class Calculator 
+{
+    static add(a,b)  // can be called only by class itself //No object can acces it 
+    {
+        return a + b;
+    }
+}
+
+// let miniCal = new Calculator();
+// console.log(miniCal.add(3,2))  // throws an error
+
+console.log(Calculator.add(2,3))
+
+// Getters and Setters 
+
+class Employee {
+  #salary;
+  constructor(name, salary) {
+    this.name = name;
+    this.#salary = salary;
+  }
+  get salary() {
+    return `You are not allowed to see the salary`;
+  }
+  set salary(value) {
+    if (value < 0) {
+      console.error("Invalid Slary");
+    } else {
+      this._salary = value;
+    }
+  }
+}
+let emp = new Employee("Alice" , 100000)
+console.log(emp._salary);
