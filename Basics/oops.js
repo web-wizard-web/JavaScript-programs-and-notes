@@ -81,7 +81,7 @@ class BankAccount
 
     getBalance()
     {
-        return `$ ${this.#balance}`
+        return `$ ${this.balance}`
     }
 }
 
@@ -137,7 +137,7 @@ console.log(penguin.fly())
 
 class Calculator 
 {
-    static add(a,b)  // can be called only by class itself //No object can acces it 
+    static add(a,b)  // can be called only by class itself //No object can acces it 7
     {
         return a + b;
     }
@@ -150,11 +150,31 @@ console.log(Calculator.add(2,3))
 
 // Getters and Setters 
 
+// class Employee {
+//   #salary;
+//   constructor(name, salary) {
+//     this.name = name;
+//     this.#salary = salary;
+//   }
+//   get salary() {
+//     return `You are not allowed to see the salary`;
+//   }
+//   set salary(value) {
+//     if (value < 0) {
+//       console.error("Invalid Slary");
+//     } else {
+//       this._salary = value;
+//     }
+//   }
+// }
+// let emp = new Employee("Alice" , 100000)
+// console.log(emp._salary);
+
+
 class Employee {
-  #salary;
   constructor(name, salary) {
     this.name = name;
-    this.#salary = salary;
+    this._salary = salary;
   }
   get salary() {
     return `You are not allowed to see the salary`;
@@ -167,5 +187,23 @@ class Employee {
     }
   }
 }
-let emp = new Employee("Alice" , 100000)
-console.log(emp._salary);
+let emp2 = new Employee("Alice", 100000);
+console.log(emp2._salary);
+
+
+// Closures 
+function makeCounter() {
+  let count = 0; // The variable to be "remembered"
+
+  function increment() {
+    count++;
+    console.log(count);
+  }
+
+  return increment; // The inner function (closure) is returned
+}
+
+const counter1 = makeCounter(); // count is 0
+counter1(); // Output: 1
+counter1(); // Output: 2
+counter1(); // Output: 3
