@@ -41,3 +41,5 @@ result(); // Output: Jimmy studies.
 
 
 // apply method
+
+   
